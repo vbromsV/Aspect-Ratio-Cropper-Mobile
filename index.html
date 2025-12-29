@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Aspect Ratio Cropper</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="icon" href="icons/icon-192.svg" />
+  <link rel="apple-touch-icon" href="icons/icon-192.svg" />
+</head>
+<body>
+  <header class="topbar">
+    <button id="btnQuickSave" class="btn btn-ghost">Quick save</button>
+    <div class="title">Aspect Ratio</div>
+    <button id="btnExport" class="btn">Export</button>
+  </header>
+
+  <main class="stage">
+    <div id="emptyState" class="empty">
+      <div class="empty-card">
+        <div class="empty-title">Ladda en bild</div>
+        <div class="empty-text">
+          Tryck på Load längst ned, välj en bild, justera den blå rutan med drag och pinch, spara.
+        </div>
+      </div>
+    </div>
+
+    <canvas id="canvas" class="canvas" aria-label="Bildyta"></canvas>
+  </main>
+
+  <footer class="bottombar">
+    <button id="btnRatio" class="btn btn-pill">
+      <span class="label">Aspect ratio</span>
+      <span id="ratioValue" class="value">1:1 (P)</span>
+    </button>
+
+    <button id="btnLoad" class="btn btn-pill btn-primary">Load</button>
+
+    <button id="btnOrient" class="btn btn-icon" aria-label="Växla porträtt/landskap" title="Växla porträtt/landskap">
+      <span class="icon">↻</span>
+    </button>
+  </footer>
+
+  <div id="ratioSheet" class="sheet hidden" role="dialog" aria-modal="true" aria-label="Välj aspect ratio">
+    <div class="sheet-backdrop" id="sheetBackdrop"></div>
+    <div class="sheet-panel">
+      <div class="sheet-title">Välj aspect ratio</div>
+      <div class="sheet-list" id="ratioList"></div>
+      <button id="btnCloseSheet" class="btn btn-pill sheet-close">Stäng</button>
+    </div>
+  </div>
+
+  <input id="fileInput" type="file" accept="image/*" class="hidden" />
+
+  <script src="app.js"></script>
+</body>
+</html>
